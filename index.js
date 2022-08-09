@@ -192,13 +192,13 @@ function log(data, level) {
         logFile[level],
         removeANSIFormatting(
             util.format(
-                '%s:%s:%s.%s GMT > %s%s\n',
+                `%s:%s:%s.%s GMT > %s%s${' %s'.repeat(data.length - 1)}\n`,
                 hour,
                 minute,
                 second,
                 millisecond,
                 levelSpace[level],
-                data
+                ...data
             )
         )
     );
@@ -224,7 +224,7 @@ function log(data, level) {
             millisecond,
             levelColor[level]
         ),
-        data
+        ...data
     );
     saveCombined({
         hour,
@@ -236,18 +236,18 @@ function log(data, level) {
     });
 }
 
-exports.error = function error(data) {
+exports.error = function error(...data) {
     log(data, 'error');
 };
-exports.warn = function warn(data) {
+exports.warn = function warn(...data) {
     log(data, 'warn');
 };
-exports.info = function info(data) {
+exports.info = function info(...data) {
     log(data, 'info');
 };
-exports.game = function game(data) {
+exports.game = function game(...data) {
     log(data, 'game');
 };
-exports.debug = function debug(data) {
+exports.debug = function debug(...data) {
     log(data, 'debug');
 };
