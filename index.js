@@ -152,13 +152,13 @@ function saveCombined(data) {
         logFile[level],
         removeANSIFormatting(
             util.format(
-                '%s:%s:%s.%s GMT > %s%s\n',
+                `%s:%s:%s.%s GMT > %s%s${' %s'.repeat(data.data.length - 1)}\n`,
                 data.hour,
                 data.minute,
                 data.second,
                 data.millisecond,
                 levelSpace[data.level],
-                data.data
+                ...data.data
             )
         )
     );
