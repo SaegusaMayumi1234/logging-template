@@ -158,7 +158,7 @@ function saveCombined(data) {
                 data.second,
                 data.millisecond,
                 levelSpace[data.level],
-                ...data.data
+                util.inspect(data.data, { showHidden: false, depth: null, colors: false, })
             )
         )
     );
@@ -198,7 +198,7 @@ function log(data, level) {
                 second,
                 millisecond,
                 levelSpace[level],
-                ...data
+                util.inspect(data, { showHidden: false, depth: null, colors: false, })
             )
         )
     );
